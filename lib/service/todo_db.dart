@@ -25,7 +25,7 @@ class ToDoDB {
   }
 
   Future<List<Todo>> fetchAll() async {
-    final database = await DataBaseService().database;
+    final database = await DataBaseService().database; //test
     final todos = await database.rawQuery(
         '''SELECT * FROM $tableName ORDER BY COALESCE(updated_at,created_at)''');
     return todos.map((todo) => Todo.fromSqfliteDatabase(todo)).toList();
